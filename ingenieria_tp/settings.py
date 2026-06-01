@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'reposteria',
+    'usuarios',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,3 +125,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'usuarios.Usuario'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
