@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ producto.nombre }} - Mis Delicias</title>
+</head>
+<body>
+    <h1>{{ producto.nombre }}</h1>
+
+    {% if producto.categoria %}
+        <p><strong>Categoría:</strong> {{ producto.categoria.nombre }}</p>
+    {% else %}
+        <p><strong>Categoría:</strong> Sin categoría</p>
+    {% endif %}
+
+    <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+
+    {% if producto.disponible %}
+        <p><strong>Estado:</strong> Disponible</p>
+    {% else %}
+        <p><strong>Estado:</strong> No disponible</p>
+    {% endif %}
+
+    <a href="{% url 'producto_editar' producto.id %}">Editar</a> |
+    <a href="{% url 'producto_eliminar' producto.id %}">Eliminar</a> |
+    <a href="{% url 'productos' %}">Volver a productos</a>
+</body>
+</html>
