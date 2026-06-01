@@ -9,11 +9,21 @@
 
     <p>Estos son algunos de los productos disponibles en nuestra repostería.</p>
 
+    <a href="{% url 'producto_crear' %}">Agregar producto</a>
+    <br><br>
+
     {% if productos %}
         <ul>
             {% for producto in productos %}
                 <li>
                     <strong>{{ producto.nombre }}</strong><br>
+
+                    {% if producto.categoria %}
+                        Categoría: {{ producto.categoria.nombre }}<br>
+                    {% else %}
+                        Categoría: Sin categoría<br>
+                    {% endif %}
+
                     {{ producto.descripcion }}<br>
                     Precio: ${{ producto.precio }}<br>
 
@@ -22,6 +32,12 @@
                     {% else %}
                         No disponible
                     {% endif %}
+
+                    <br><br>
+
+                    <a href="{% url 'producto_detalle' producto.id %}">Ver detalle</a> |
+                    <a href="{% url 'producto_editar' producto.id %}">Editar</a> |
+                    <a href="{% url 'producto_eliminar' producto.id %}">Eliminar</a>
                 </li>
                 <br>
             {% endfor %}
