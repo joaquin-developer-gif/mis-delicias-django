@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos - Mis Delicias</title>
+</head>
+<body>
+    <h1>Productos de Mis Delicias</h1>
+
+    <p>Estos son algunos de los productos disponibles en nuestra repostería.</p>
+
+    {% if productos %}
+        <ul>
+            {% for producto in productos %}
+                <li>
+                    <strong>{{ producto.nombre }}</strong><br>
+                    {{ producto.descripcion }}<br>
+                    Precio: ${{ producto.precio }}<br>
+
+                    {% if producto.disponible %}
+                        Disponible
+                    {% else %}
+                        No disponible
+                    {% endif %}
+                </li>
+                <br>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay productos cargados todavía.</p>
+    {% endif %}
+
+    <a href="/">Volver al inicio</a>
+</body>
+</html>
